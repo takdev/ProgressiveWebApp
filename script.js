@@ -1,9 +1,25 @@
-describe(’with a 320x568 viewport’, function() { 
-  beforeEach(function() { 
-     cy.visit(’https://pwa.domain.com’); 
-     cy.viewport(320, 568); 
-  }); 
-  it(‘should display the toggle button’, () => { 
-   cy.get(’#menu-toggle’).should(’exist’); 
-  }); 
-}); 
+import generateUI from "./javascript/generateUI";
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (navigator.onLine) {
+    document.querySelector(".notification").setAttribute("hidden", "");
+  }
+
+  window.addEventListener("online", () => {
+    document.querySelector(".notification").setAttribute("hidden", "");
+  });
+  window.addEventListener("offline", () => {
+    document.querySelector(".notification").removeAttribute("hidden");
+  });
+
+  let fetchData;
+  if (navigator.onLine) {
+    fetchData = fetch("https://api.github.com/users/EmmanuelDemey/repos")
+      .then((response) => response.json())
+      .then((data) => localforage.setItem("data", data));
+  } else {
+    fetchData = localforage.getItem("data");
+  }
+
+  fetchData.then((json) => generateUI(json));
+});
