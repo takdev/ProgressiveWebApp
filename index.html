@@ -3,10 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Github Client</title>
- 
+    <link rel="manifest" href="manifest.webmanifest" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js"></script>
-       <link rel="manifest" href="manifest.webmanifest" />
-	<script
+    <script
       async
       src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.9/pwacompat.min.js"
       integrity="sha384-VcI6S+HIsE80FVM1jgbd6WDFhzKYA0PecD/LcIyMQpT4fMJdijBh0I7Iblaacawc"
@@ -35,7 +34,7 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css"
       rel="stylesheet"
     />
-    <!-- <script>
+    <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("/sw.js")
@@ -48,7 +47,7 @@
       } else {
         console.warn("Service workers are not supported.");
       }
-    </script> -->
+    </script>
   </head>
   <body>
     <div hidden class="notification is-danger">
