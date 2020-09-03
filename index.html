@@ -37,7 +37,7 @@
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-          .register("/sw.js")
+          .register("/sw.js", { scope: 'https://hungry-dijkstra-d80d21.netlify.app/' })
           .then((reg) => {
             console.log("votre service worker a été enregistré!");
           })
